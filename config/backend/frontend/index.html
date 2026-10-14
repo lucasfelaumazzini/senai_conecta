@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <!-- Responsividade -->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SENAI Conecta</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+<body>
+
+    <!-- =====================================================
+         CABEÇALHO
+    ====================================================== -->
+
+    <header class="topo">
+
+        <div class="logo">
+            SENAI <span>Conecta</span>
+        </div>
+
+        <div
+            id="usuarioLogado"
+            class="usuario-logado"
+        ></div>
+
+        <button
+            id="btnLogin"
+            class="btn btn-principal"
+        >
+            Entrar
+        </button>
+
+        <button
+            id="btnCadastro"
+            class="btn btn-secundario"
+        >
+            Criar conta
+        </button>
+
+        <button
+            id="btnLogout"
+            class="btn btn-perigo escondido"
+        >
+            Sair
+        </button>
+
+    </header>
+
+
+    <!-- =====================================================
+         CONTEÚDO PRINCIPAL
+    ====================================================== -->
+
+    <main class="container">
+
+        <!-- PESQUISA -->
+
+        <section class="pesquisa">
+
+            <input
+                type="text"
+                id="campoPesquisa"
+                placeholder="Pesquisar usuários..."
+            >
+
+            <button
+                id="btnPesquisar"
+                class="btn btn-principal"
+            >
+                Pesquisar
+            </button>
+
+        </section>
+
+
+        <!-- RESULTADO DA PESQUISA -->
+
+        <section
+            id="resultadoPesquisa"
+            class="resultado-pesquisa"
+        ></section>
+
+
+        <!-- CRIAR PUBLICAÇÃO -->
+
+        <section
+            id="areaPublicacao"
+            class="card criar-publicacao escondido"
+        >
+
+            <h2>Nova publicação</h2>
+
+            <form id="formPublicacao">
+
+                <textarea
+                    id="textoPublicacao"
+                    name="texto"
+                    placeholder="O que você quer compartilhar?"
+                    rows="4"
+                ></textarea>
+
+                <label class="campo-arquivo">
+
+                    📷 Escolher imagem
+
+                    <input
+                        type="file"
+                        id="imagemPublicacao"
+                        name="imagem"
+                        accept="image/*"
+                    >
+
+                </label>
+
+                <div id="previewImagem"></div>
+
+                <button
+                    type="submit"
+                    class="btn btn-principal"
+                >
+                    Publicar
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- FEED -->
+
+        <section class="feed">
+
+            <h1>Feed</h1>
+
+            <div id="feedPublicacoes">
+
+                <div class="carregando">
+                    Carregando publicações...
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         MODAL DE LOGIN
+    ====================================================== -->
+
+    <div
+        id="modalLogin"
+        class="modal"
+    >
+
+        <div class="modal-conteudo">
+
+            <button
+                class="fechar"
+                data-fechar="modalLogin"
+            >
+                ×
+            </button>
+
+            <h2>Entrar</h2>
+
+            <form id="formLogin">
+
+                <input
+                    type="text"
+                    id="login"
+                    placeholder="E-mail ou username"
+                    required
+                >
+
+                <input
+                    type="password"
+                    id="senhaLogin"
+                    placeholder="Senha"
+                    required
+                >
+
+                <button
+                    type="submit"
+                    class="btn btn-principal"
+                >
+                    Entrar
+                </button>
+
+            </form>
+
+            <p>
+                Ainda não possui conta?
+                <button
+                    class="link-button"
+                    id="abrirCadastro"
+                >
+                    Cadastre-se
+                </button>
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MODAL DE CADASTRO
+    ====================================================== -->
+
+    <div
+        id="modalCadastro"
+        class="modal"
+    >
+
+        <div class="modal-conteudo">
+
+            <button
+                class="fechar"
+                data-fechar="modalCadastro"
+            >
+                ×
+            </button>
+
+            <h2>Criar conta</h2>
+
+            <form id="formCadastro">
+
+                <input
+                    type="text"
+                    name="nome"
+                    placeholder="Nome completo"
+                    required
+                >
+
+                <input
+                    type="text"
+                    name="username"
+                    placeholder="Username"
+                    required
+                >
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="E-mail"
+                    required
+                >
+
+                <input
+                    type="password"
+                    name="senha"
+                    placeholder="Senha"
+                    minlength="6"
+                    required
+                >
+
+                <select name="tipo_perfil">
+
+                    <option value="aluno">
+                        Aluno
+                    </option>
+
+                    <option value="professor">
+                        Professor
+                    </option>
+
+                    <option value="administrador">
+                        Administrador
+                    </option>
+
+                </select>
+
+                <label class="campo-arquivo">
+
+                    📷 Foto de perfil
+
+                    <input
+                        type="file"
+                        name="foto"
+                        accept="image/*"
+                    >
+
+                </label>
+
+                <button
+                    type="submit"
+                    class="btn btn-principal"
+                >
+                    Criar conta
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MODAL DE PERFIL
+    ====================================================== -->
+
+    <div
+        id="modalPerfil"
+        class="modal"
+    >
+
+        <div class="modal-conteudo modal-grande">
+
+            <button
+                class="fechar"
+                data-fechar="modalPerfil"
+            >
+                ×
+            </button>
+
+            <div id="conteudoPerfil"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MODAL DE CONFIRMAÇÃO
+    ====================================================== -->
+
+    <div
+        id="modalExcluir"
+        class="modal"
+    >
+
+        <div class="modal-conteudo">
+
+            <h2>Excluir publicação?</h2>
+
+            <p>
+                Tem certeza que deseja excluir
+                esta publicação?
+            </p>
+
+            <div class="acoes-modal">
+
+                <button
+                    id="cancelarExclusao"
+                    class="btn btn-secundario"
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    id="confirmarExclusao"
+                    class="btn btn-perigo"
+                >
+                    Excluir
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- MENSAGEM -->
+
+    <div
+        id="mensagem"
+        class="mensagem"
+    ></div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
