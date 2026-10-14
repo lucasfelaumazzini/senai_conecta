@@ -1,0 +1,5 @@
+# Impede a listagem dos arquivos da pasta
+Options -Indexes
+
+# Define o arquivo principal
+DirectoryIndex index.php
